@@ -1,13 +1,16 @@
 import React from 'react';
 import useInput from '../../customhooks/useInput';
+import { addNote } from '../../store/actions/noteAction';
+import { useDispatch} from 'react-redux';
 
 const Form = () => {
     const [title, bindTitle, resetTitle] = useInput();
     const [content, bindContent, resetContent] = useInput();
+    const dispatch = useDispatch()
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(title,content);
-        resetTitle();
+        dispatch(addNote({title,content}))
+        resetTitle(); 
         resetContent();
     }
     return (
@@ -15,8 +18,8 @@ const Form = () => {
             <form onSubmit={handleSubmit} className="white">
                 <h5 className="grey-text text-darken-2">Add New Note</h5>
                 <div className="input-field">
-                    <input id="note_title" type="text" className="validate" {...bindTitle}/>
-                    <label htmlFor ="note_title">Note title</label>
+                    <input id="note_title" type="text" className="validate" {...bindTitle} />
+                    <label htmlFor="note_title">Note title</label>
                 </div>
                 <div className="input-field">
                     <textarea id="note_content" className="materialize-textarea" {...bindContent}></textarea>

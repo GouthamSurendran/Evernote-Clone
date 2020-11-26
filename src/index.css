@@ -22,3 +22,23 @@ form {
   padding: 15px;
   border-radius: 5px;
 }
+
+.note {
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+.note i:hover {
+  transform: scale(1.2);
+}
+
+.noteslist {
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.con {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
