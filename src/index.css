@@ -42,3 +42,9 @@ form {
   justify-content: center;
   max-width: 100%;
 }
+
+.update {
+  margin: auto;
+  padding: 10px;
+  max-width: 80%;
+}

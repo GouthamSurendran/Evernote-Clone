@@ -7,7 +7,28 @@ const NotesDetail = (props) => {
     const id = props.match.params.id
     useFirestoreConnect([{ collection: 'notes', doc: id }]);
     const note = useSelector(({ firestore: { data } }) => data.notes && data.notes[id])
-    return (
+    const noteMarkup = !isLoaded(true) ? (
+        <div className="container section">
+            <div className="card z-depth-0" style={{ borderRadius: '10px' }}>
+                <div className="card-content">
+                    <span className="card-title">Loading...</span>
+                    <p>{note?.content}</p>
+                </div>
+                <div className="card-action grey lighten-4 grey-text" style={{ borderRadius: '10px' }}>
+                </div>
+            </div>
+        </div>
+    ) : isEmpty(note) ? (
+        <div className="container section">
+            <div className="card z-depth-0" style={{ borderRadius: '10px' }}>
+                <div className="card-content">
+                    <span className="card-title">The note content is empty.</span>
+                </div>
+                <div className="card-action grey lighten-4 grey-text" style={{ borderRadius: '10px' }}>
+                </div>
+            </div>
+        </div>
+    ):(
         <div className="container section">
             <div className="card z-depth-0"  style={{borderRadius:'10px'}}>
                 <div className="card-content">
@@ -20,6 +41,7 @@ const NotesDetail = (props) => {
             </div>
         </div>
     )
+    return noteMarkup;
 }
 
 export default NotesDetail
