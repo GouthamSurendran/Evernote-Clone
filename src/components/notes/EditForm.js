@@ -16,7 +16,7 @@ const EditForm = () => {
         dispatch(updateNote({ id: note.id, title, content }))
         resetTitle();
         resetContent();
-        history.pushState('/');
+        history.push('/');
     }
     return (
         <div className="section update">
